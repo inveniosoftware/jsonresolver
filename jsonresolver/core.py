@@ -41,7 +41,7 @@ class JSONResolver(object):
         self.pm.hook.jsonresolver_loader(url_map=self.url_map)
 
     def resolve(self, url):
-        """Resolve given URL and use regitered loader."""
+        """Resolve given URL and use registered loader."""
         if self.url_map is None:
             self._build_url_map()
         parts = urlsplit(url)
