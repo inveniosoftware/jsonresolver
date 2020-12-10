@@ -10,8 +10,8 @@
  JSONResolver
 ==============
 
-.. image:: https://img.shields.io/travis/inveniosoftware/jsonresolver.svg
-        :target: https://travis-ci.org/inveniosoftware/jsonresolver
+.. image:: https://github.com/inveniosoftware/jsonresolver/workflows/CI/badge.svg
+        :target: https://github.com/inveniosoftware/jsonresolver/actions?query=workflow%3ACI
 
 .. image:: https://img.shields.io/coveralls/inveniosoftware/jsonresolver.svg
         :target: https://coveralls.io/r/inveniosoftware/jsonresolver

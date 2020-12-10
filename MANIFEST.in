@@ -24,3 +24,4 @@ include .lgtm
 include LICENSE
 include MAINTAINERS
 global-exclude *.py[cod] __pycache__ *.so
+recursive-include .github/workflows *.yml
