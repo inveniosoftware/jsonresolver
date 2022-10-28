@@ -9,8 +9,6 @@
 
 """Define unit tests to test core functionality."""
 
-from __future__ import absolute_import
-
 import pytest
 from jsonschema import RefResolutionError, validate
 
@@ -45,7 +43,7 @@ def test_key_resolver():
 
 
 def test_missing_route():
-    """Test orignal resolver."""
+    """Test original resolver."""
     example_schema = {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "type": "object",

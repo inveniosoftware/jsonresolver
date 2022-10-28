@@ -28,8 +28,6 @@ Example:
 
 """
 
-from __future__ import absolute_import
-
 from jsonschema import RefResolver as _RefResolver
 from werkzeug.exceptions import NotFound
 

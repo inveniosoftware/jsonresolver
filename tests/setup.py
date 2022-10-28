@@ -1,63 +1,29 @@
-import os
+# -*- coding: utf-8 -*-
+#
+# This file is part of JSONResolver.
+# Copyright (C) 2015-2022 CERN.
+# Copyright (C) 2022 Graz University of Technology.
+#
+# JSONResolver is free software; you can redistribute it
+# and/or modify it under the terms of the GNU General Public License as
+# published by the Free Software Foundation; either version 2 of the
+# License, or (at your option) any later version.
+#
+# JSONResolver is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with JSONResolver; if not, write to the
+# Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston,
+# MA 02111-1307, USA.
+#
+# In applying this license, CERN does not
+# waive the privileges and immunities granted to it by virtue of its status
+# as an Intergovernmental Organization or submit itself to any jurisdiction.
+
 
 from setuptools import setup
 
-current_dir = os.getcwd()
-
-tests_require = [
-    "check-manifest>=0.25",
-    "coverage>=4.0",
-    "isort>=4.2.2",
-    "mock>=1.3.0",
-    "pydocstyle>=1.0.0",
-    "pytest-cache>=1.0",
-    "pytest-cov>=2.8.1",
-    "pytest-pep8>=1.0.6",
-    "pytest>=3.0.0",
-    "requests>=2.7.0",
-]
-
-extras_require = {
-    "docs": [
-        "Sphinx>=1.5.1",
-    ],
-    "jsonref": [
-        "jsonref>=0.1",
-    ],
-    "jsonschema": [
-        "jsonschema>=2.5.1",
-    ],
-    "tests": tests_require,
-}
-
-extras_require["all"] = []
-for reqs in extras_require.values():
-    extras_require["all"].extend(reqs)
-
-setup_requires = [
-    "pytest-runner>=2.7.0",
-]
-
-install_requires = [
-    "six>=1.12.0",
-    "pluggy>=0.10.0,<1.0",
-    "werkzeug>=1.0.0",
-]
-
-setup(
-    name="demo",
-    packages=["demo"],
-    package_dir={"demo": current_dir},
-    install_requires=install_requires,
-    extras_require=extras_require,
-    setup_requires=setup_requires,
-    # the following makes a plugin available to pytest
-    entry_points={
-        "espresso": ["demo.simple = demo.simple"],
-        "raising": ["demo.raising = demo.raising"],
-        "raising_hook": ["demo.raising_hook = demo.raising_hook"],
-        "someotherstuff": [],
-        "doubletrouble": ["demo.simple = demo.simple", "demo.simple2 = demo.simple"],
-        "importfail": ["importfail = test.importfail"],
-    },
-)
+setup()
