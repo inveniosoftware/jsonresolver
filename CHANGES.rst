@@ -9,6 +9,12 @@
 Changes
 =======
 
+Version 0.3.2 (released 2022-10-31)
+-----------------------------------
+
+- Make the module compatible with jsonref v1.0.0
+
+
 Version 0.3.1 (released 2020-05-06)
 -----------------------------------
 
