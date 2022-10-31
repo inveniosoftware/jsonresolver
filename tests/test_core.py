@@ -9,15 +9,41 @@
 
 """Define unit tests to test core functionality."""
 
-from __future__ import absolute_import
+import importlib
+from unittest.mock import patch
 
 import pytest
 from demo.raising import EndpointCallDetected
 from demo.raising_hook import HookRegistrationDetected
+from importlib_metadata import EntryPoint
 
 from jsonresolver import JSONResolver
 
 
+class MockEntryPoint(EntryPoint):
+    """EntryPoint mock."""
+
+    def load(self):
+        """Load module from the mocked entry point."""
+        if self.name == "importfail":
+            raise ImportError()
+        else:
+            return importlib.import_module(self.name)
+
+
+_mock_entry_points = {
+    MockEntryPoint(name="demo.simple", value="demo.simple", group="espresso"),
+    MockEntryPoint(name="demo.raising", value="demo.raising", group="raising"),
+    MockEntryPoint(
+        name="demo.raising_hook", value="demo.raising_hook", group="raising_hook"
+    ),
+    MockEntryPoint(name="demo.simple", value="demo.simple", group="doubletrouble"),
+    MockEntryPoint(name="demo.simple", value="demo.simple", group="doubletrouble"),
+    MockEntryPoint(name="importfail", value="test.importfail", group="importfail"),
+}
+
+
+@patch("importlib_metadata.PathDistribution.entry_points", _mock_entry_points)
 def test_entry_point_group():
     """Test the entry point group loading."""
     resolver = JSONResolver(entry_point_group="espresso")
@@ -30,6 +56,7 @@ def test_plugins():
     assert resolver.resolve("http://localhost:4000/test") == {"test": "test"}
 
 
+@patch("importlib_metadata.PathDistribution.entry_points", _mock_entry_points)
 def test_plugin_lazy_execution():
     """Test the lazy evaluation of loaded plugin."""
     # Plugin code should be called (i.e. raise exception) on resolve method
@@ -45,6 +72,7 @@ def test_plugin_lazy_execution():
     assert exc_info.type is EndpointCallDetected
 
 
+@patch("importlib_metadata.PathDistribution.entry_points", _mock_entry_points)
 def test_plugin_lazy_execution_hooks():
     """Test the lazy evaluation of loaded plugin through hooks."""
     # Plugin code should be called (i.e. raise exception) on resolve method

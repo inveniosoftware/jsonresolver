@@ -9,8 +9,6 @@
 
 """Define decorators for easier plugin definition."""
 
-from __future__ import absolute_import
-
 import sys
 
 from werkzeug.routing import Rule

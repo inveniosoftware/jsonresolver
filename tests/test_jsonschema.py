@@ -9,8 +9,6 @@
 
 """Define unit tests to test core functionality."""
 
-from __future__ import absolute_import
-
 import pytest
 from jsonschema import RefResolutionError, validate
 

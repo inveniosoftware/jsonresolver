@@ -9,7 +9,6 @@
 
 """JSON data resolver with support for plugins."""
 
-from __future__ import absolute_import
 
 from .core import JSONResolver
 from .decorators import route

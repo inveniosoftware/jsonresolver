@@ -8,11 +8,6 @@
 # it under the terms of the Revised BSD License; see LICENSE file for
 # more details.
 
-from __future__ import print_function
-
-import sphinx.environment
-from docutils.utils import get_source_line
-
 from jsonresolver import __version__
 
 # -- General configuration ------------------------------------------------

@@ -28,8 +28,6 @@ Example:
 
 """
 
-from __future__ import absolute_import
-
 from jsonschema import RefResolver as _RefResolver
 from werkzeug.exceptions import NotFound
 
@@ -48,6 +46,6 @@ def ref_resolver_factory(resolver):
                     self.store[uri] = result
                 return result
             except NotFound:
-                return super(RefResolver, self).resolve_remote(uri)
+                return super().resolve_remote(uri)
 
     return RefResolver
