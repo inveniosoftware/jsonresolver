@@ -10,12 +10,12 @@
 """Define unit tests to test core functionality."""
 
 import importlib
+from importlib.metadata import EntryPoint
 from unittest.mock import patch
 
 import pytest
 from demo.raising import EndpointCallDetected
 from demo.raising_hook import HookRegistrationDetected
-from importlib_metadata import EntryPoint
 
 from jsonresolver import JSONResolver
 
@@ -43,7 +43,23 @@ _mock_entry_points = {
 }
 
 
-@patch("importlib_metadata.PathDistribution.entry_points", _mock_entry_points)
+def patch_entrypoints(func):
+    """Patch importlib.metadata.Distribution.entry_points."""
+    try:
+        # python 3.9 with importlib_metadata
+        import importlib_metadata
+
+        return patch(
+            "importlib_metadata.PathDistribution.entry_points", _mock_entry_points
+        )(func)
+    except ImportError:
+        # importlib.metadata
+        return patch(
+            "importlib.metadata.PathDistribution.entry_points", _mock_entry_points
+        )(func)
+
+
+@patch_entrypoints
 def test_entry_point_group():
     """Test the entry point group loading."""
     resolver = JSONResolver(entry_point_group="espresso")
@@ -56,7 +72,7 @@ def test_plugins():
     assert resolver.resolve("http://localhost:4000/test") == {"test": "test"}
 
 
-@patch("importlib_metadata.PathDistribution.entry_points", _mock_entry_points)
+@patch_entrypoints
 def test_plugin_lazy_execution():
     """Test the lazy evaluation of loaded plugin."""
     # Plugin code should be called (i.e. raise exception) on resolve method
@@ -72,7 +88,7 @@ def test_plugin_lazy_execution():
     assert exc_info.type is EndpointCallDetected
 
 
-@patch("importlib_metadata.PathDistribution.entry_points", _mock_entry_points)
+@patch_entrypoints
 def test_plugin_lazy_execution_hooks():
     """Test the lazy evaluation of loaded plugin through hooks."""
     # Plugin code should be called (i.e. raise exception) on resolve method
