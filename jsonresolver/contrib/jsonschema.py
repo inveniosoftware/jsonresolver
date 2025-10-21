@@ -2,6 +2,7 @@
 #
 # This file is part of jsonresolver
 # Copyright (C) 2015 CERN.
+# Copyright (C) 2025-2026 Graz University of Technology.
 #
 # jsonresolver is free software; you can redistribute it and/or
 # modify it under the terms of the Revised BSD License; see LICENSE
@@ -28,16 +29,15 @@ Example:
 
 """
 
-from jsonschema import RefResolver as _RefResolver
 from werkzeug.exceptions import NotFound
+
+from .base import RefResolverBase
 
 
 def ref_resolver_factory(resolver):
     """Generate new RefResolver class that uses given resolver."""
 
-    class RefResolver(_RefResolver):
-        """Implement custom remote URL resolver."""
-
+    class RefResolver(RefResolverBase):
         def resolve_remote(self, uri):
             """Resolve remove uri using given resolver."""
             try:
