@@ -2,6 +2,7 @@
 #
 # This file is part of jsonresolver
 # Copyright (C) 2015, 2016 CERN.
+# Copyright (C) 2025 Graz University of Technology.
 #
 # jsonresolver is free software; you can redistribute it and/or modify
 # it under the terms of the Revised BSD License; see LICENSE file for
@@ -18,7 +19,7 @@ from werkzeug.routing import Map
 from . import hookspec
 
 
-class JSONResolver(object):
+class JSONResolver:
     """Resolve JSON objects based on rules in URL map."""
 
     def __init__(self, plugins=None, entry_point_group=None):

@@ -2,6 +2,7 @@
 #
 # This file is part of jsonresolver
 # Copyright (C) 2015 CERN.
+# Copyright (C) 2025 Graz University of Technology.
 #
 # jsonresolver is free software; you can redistribute it and/or
 # modify it under the terms of the Revised BSD License; see LICENSE
@@ -11,6 +12,7 @@
 
 import pytest
 from jsonschema import RefResolutionError, validate
+from referencing.exceptions import Unresolvable
 
 from jsonresolver import JSONResolver
 from jsonresolver.contrib.jsonschema import ref_resolver_factory
