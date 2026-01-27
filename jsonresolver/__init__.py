@@ -10,7 +10,6 @@
 
 """JSON data resolver with support for plugins."""
 
-
 from .core import JSONResolver
 from .decorators import route
 from .hookimpl import hookimpl
