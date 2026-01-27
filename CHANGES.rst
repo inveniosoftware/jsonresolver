@@ -1,7 +1,7 @@
 ..
     This file is part of jsonresolver
     Copyright (C) 2015, 2016 CERN.
-    Copyright (C) 2025 Graz University of Technology.
+    Copyright (C) 2025-2026 Graz University of Technology.
 
     jsonresolver is free software; you can redistribute it and/or modify
     it under the terms of the Revised BSD License; see LICENSE file for
@@ -9,6 +9,12 @@
 
 Changes
 =======
+
+Version v0.5.0 (released 2026-01-27)
+------------------------------------
+
+- chore(black): update formatting to >= 26.0
+- fix: DeprecationWarning
 
 Version v0.4.1 (released 2025-07-14)
 ------------------------------------
