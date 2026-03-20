@@ -14,7 +14,7 @@ from .core import JSONResolver
 from .decorators import route
 from .hookimpl import hookimpl
 
-__version__ = "0.5.0"
+__version__ = "0.5.1"
 
 __all__ = (
     "JSONResolver",
