@@ -10,6 +10,10 @@
 Changes
 =======
 
+Version v0.5.1 (released 2026-03-20)
+
+- fix: add jsonschema-specifications to install_requires
+
 Version v0.5.0 (released 2026-01-27)
 ------------------------------------
 
