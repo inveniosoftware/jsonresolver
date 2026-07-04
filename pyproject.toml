@@ -1,4 +1,72 @@
-[build-system]
-requires = ["setuptools", "wheel", "babel>2.8"]
-build-backend = "setuptools.build_meta"
+# SPDX-FileCopyrightText: 2015, 2016 CERN.
+# SPDX-FileCopyrightText: 2022-2026 Graz University of Technology.
+# SPDX-FileCopyrightText: 2022 Graz University of Technology.
+# SPDX-FileCopyrightText: 2026 TU Wien.
+# SPDX-License-Identifier: MIT
 
+[project]
+name = "jsonresolver"
+description = "JSON data resolver with support for plugins."
+readme = "README.rst"
+requires-python = ">=3.7"
+license = "BSD-3-Clause"
+authors = [
+  { name = "Invenio collaboration", email = "info@inveniosoftware.org" },
+]
+keywords = [
+  "Invenio",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+]
+dependencies = [
+  "jsonschema-specifications",
+  "pluggy>=1.0,<2",
+  "werkzeug>=1.0.0",
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/inveniosoftware/jsonresolver"
+
+[project.optional-dependencies]
+docs = []
+jsonref = [
+  "jsonref>=1.0.0",
+]
+jsonschema = [
+  "jsonschema>=2.5.1",
+]
+tests = [
+  "jsonref>=1.0.0",
+  "jsonschema>=2.5.1",
+  "mock>=1.3.0",
+  "pytest-black>=0.3.0",
+  "pytest-cache>=1.0",
+  "pytest-invenio>=3.0.0,<4.0.0",
+  "requests>=2.7.0",
+  "sphinx>=4.5",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "jsonresolver/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "/jsonresolver",
+]
+
+[tool.isort]
+profile = "black"
+
+[tool.pydocstyle]
+add_ignore = "D412"
+
+[tool.pytest.ini_options]
+addopts = '--black --isort --pydocstyle --doctest-glob="*.rst" --doctest-modules --cov=jsonresolver --cov-report=term-missing'
+testpaths = "tests jsonresolver"
+live_server_scope = "module"
