@@ -1,4 +1,0 @@
-# SPDX-FileCopyrightText: 2015 CERN.
-# SPDX-License-Identifier: BSD-3-Clause
-
--e git+git://github.com/mitsuhiko/werkzeug.git#egg=Werkzeug
